@@ -3,12 +3,12 @@
      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
+ <parent>
     <groupId>org.mmbase</groupId>
-    <artifactId>mmbase-application-parent</artifactId>
-    <version>2.0-SNAPSHOT</version>
-    <relativePath>../../maven-base/applications/pom.xml</relativePath>
+    <artifactId>mmbase-parent</artifactId>
+    <version>2.0.2-SNAPSHOT</version>
   </parent>
+  <version>2.0-SNAPSHOT</version>
 
   <artifactId>mmbase-taglib</artifactId>
   <name>MMBase2 Taglib</name>
@@ -154,18 +154,16 @@
           <dependency>
             <groupId>org.mmbase</groupId>
             <artifactId>mmbase-rmmci</artifactId>
-            <version>${project.version}</version>
             <classifier>client</classifier>
           </dependency>
           <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.2.1</version>
+            <version>1.4</version>
           </dependency>
           <dependency>
             <groupId>org.mmbase</groupId>
             <artifactId>mmbase-bridge</artifactId>
-            <version>${mmbase.version}</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -189,6 +187,17 @@
     </plugins>
   </build>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.mmbase</groupId>
+        <artifactId>mmbase-bom</artifactId>
+        <version>2.0-SNAPSHOT</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
 
     <dependency>
@@ -203,8 +212,6 @@
       <artifactId>commons-fileupload</artifactId>
       <scope>provided</scope>
     </dependency>
-
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -228,14 +235,14 @@
   </dependencies>
   <repositories>
     <repository>
-      <id>mmbase</id>
-      <name>MMBase Maven2 repository</name>
-      <url>http://www.mmbase.org/maven2</url>
-    </repository>
-    <repository>
-      <id>mmbase-snapshots</id>
-      <name>MMBase Maven2 snapshots repository</name>
-      <url>http://www.mmbase.org/snapshots</url>
+      <id>mmbase-ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </repository>
   </repositories>
 
